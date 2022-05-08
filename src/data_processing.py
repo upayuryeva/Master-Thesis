@@ -51,7 +51,7 @@ def get_df_train_coord():
     # training
     indexes = list(range(0, 131))
     train_info = defaultdict(list)
-    data_directory = "/home/upayuryeva/workfolder/test/lits/volumes"
+    data_directory = "directory"
 
     for img_num in indexes:
         annot_info = {}

@@ -57,8 +57,6 @@ def create_head(num_features, number_classes, dropout_prob=0.5, activation_func=
 
 def ResNet18_with_head(device):
 
-
-
     model = models.resnet18(pretrained=False)
     num_features = model.fc.in_features
 
@@ -341,7 +339,7 @@ def train(model, device, train_df, test_df, batch_size, criterion, optimizer, sc
 
 
 def train_multilabel():
-    data_directory = "/home/upayuryeva/workfolder/test/lits/volumes/"
+    data_directory = "directory"
     data = Path(data_directory, "train.csv")
     df = pd.read_csv(data)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

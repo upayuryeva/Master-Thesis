@@ -62,7 +62,7 @@ def ResNet18_with_head(device):
 
     model = model.to(device)
     
-    checkpoint = torch.load("/home/upayuryeva/workfolder/test/lits/src/chkpts/epoch-10-acc-0.39")
+    checkpoint = torch.load("chkpts/epoch-10-acc-0.39")
     model.load_state_dict(checkpoint["model"])
 
     return model
@@ -221,7 +221,7 @@ def train(model, device, train_df, test_df, batch_size, criterion, optimizer, sc
     print(f'Best val Acc: {best_acc:4f}')
     model.load_state_dict(state["model"])
 
-    torch.save(state, f"/home/upayuryeva/workfolder/test/lits/src/chkpts/epoch-{num_epochs}-acc-{round(best_acc, 2)}")
+    torch.save(state, f"chkpts/epoch-{num_epochs}-acc-{round(best_acc, 2)}")
 
 
 def train_multilabel():
@@ -239,7 +239,6 @@ def train_multilabel():
     # weight_list = ((train_df.shape[0] - train_df[[str(el) for el in list(range(1, 12))]].sum()) / train_df[[str(el) for el in list(range(1, 12))]].sum()).to_list()
 
     weight_list = (train_df[[str(el) for el in list(range(1, 12))]].sum() / train_df.shape[0]).to_list()
-
 
     pos_weights = torch.as_tensor(weight_list, dtype=torch.float, device=device)
     criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weights)

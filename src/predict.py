@@ -1,5 +1,3 @@
-from gettext import npgettext
-from pkgutil import ImpImporter
 from train import ResNet18_with_head
 from pathlib import Path
 import pandas as pd
@@ -25,7 +23,7 @@ classLabels = [
 
 
 def predict_multilabel(num_pred=5):
-    data_directory = "/home/upayuryeva/workfolder/test/lits/volumes"
+    data_directory = "directory/"
     data = Path(data_directory, "train.csv")
     df = pd.read_csv(data)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
